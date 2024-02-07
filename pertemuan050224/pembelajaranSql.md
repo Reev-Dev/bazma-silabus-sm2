@@ -188,6 +188,43 @@ ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`rak_id`) REFERENCES `rak`(`id`) ON DE
 
 ## LEFT JOIN 
 
+Di MySQL, left join, right join, dan inner join adalah jenis-jenis join yang digunakan untuk menggabungkan data dari dua tabel atau lebih berdasarkan kriteria tertentu.
+
+Left join menggabungkan semua baris dari tabel di sebelah kiri dengan baris yang sesuai dari tabel di sebelah kanan. Jika tidak ada nilai yang cocok di tabel di sebelah kanan, baris tersebut akan tetap dimasukkan dalam hasil join, tetapi nilai kolom dari tabel di sebelah kanan akan menjadi NULL.
+
+Query : 
+
+SELECT
+    buku.nama_buku,
+    author.nama_author
+FROM
+    buku
+LEFT JOIN author ON buku.author_id = author.id;
+
 ## RIGHT JOIN
 
+Right join mirip dengan left join, tetapi kebalikannya. Right join menggabungkan semua baris dari tabel di sebelah kanan dengan baris yang sesuai dari tabel di sebelah kiri berdasarkan kondisi yang ditentukan. Jika tidak ada nilai yang cocok di tabel di sebelah kiri, baris tersebut akan tetap dimasukkan dalam hasil join, tetapi nilai kolom dari tabel di sebelah kiri akan menjadi NULL.
+
+Query :
+
+SELECT
+    buku.nama_buku,
+    rak.nomor_rak
+FROM
+    buku
+RIGHT JOIN rak ON buku.rak_id = rak.id;
+
 ## INNER JOIN (JOIN)
+
+Inner join menggabungkan baris dari dua tabel berdasarkan kondisi yang ditentukan dan hanya akan menghasilkan baris yang memiliki nilai yang sesuai di kedua tabel. Jika tidak ada nilai yang cocok, baris tersebut tidak akan dimasukkan dalam hasil join
+
+Query :
+
+SELECT
+    buku.nama_buku,
+    author.nama_author,
+    rak.nomor_rak
+FROM
+    buku
+JOIN author ON buku.author_id = author.id
+JOIN rak ON buku.rak_id = rak.id;
